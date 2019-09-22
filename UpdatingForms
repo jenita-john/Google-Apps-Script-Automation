@@ -1,0 +1,69 @@
+function UpdateForm(){
+
+  var form = FormApp.openById('1rGTViChUVMp8J6aXsGy2xUWpIipb1QdVVe73R-kF8oA');    // Using an existing form 
+  var allitems = form.getItems();
+  var i = 0,
+      thisItem,
+      thisItemType,
+      myListItem;
+  
+  var ss = SpreadsheetApp.getActive();                                            // Script is bounded to the Spreadsheet
+  var sheet = ss.getSheets()[0];                                                  // Returns the first sheet                                               
+  var range = sheet.getDataRange();                                               
+  var values = range.getValues();                                                 // Getting the values from Spreadsheet
+  
+  var MentorChoices = [];
+  var TeamChoices = [];
+  
+  for(var i = 1; i < values.length;i++){
+    
+  var session = values[i];
+  var Mentors = session[0];
+  var Teams = session[1];
+    
+ 
+  if(!MentorChoices[Mentors])
+    {
+      MentorChoices.push(Mentors); 
+    } 
+    
+    if(!TeamChoices[Teams])
+    {
+      TeamChoices.push(Teams);             
+    }
+  }
+  
+  for (i = 0; i < 1; i++){   
+  thisItem = allitems[i];
+  thisItemType =thisItem.getType();
+    Logger.log('thisItemType: ' + thisItemType); 
+    
+    if(thisItemType == FormApp.ItemType.LIST)
+    {
+      myListItem = thisItem.asListItem();
+      myListItem.setChoiceValues(MentorChoices);   
+    }
+   
+   var item2 = allitems[i+1];
+   var item2Type = item2.getType();
+    Logger.log('thisItemType: ' + item2Type );
+    
+    if(thisItemType == FormApp.ItemType.LIST)
+    {
+      var myTeamItem = item2.asListItem();
+      myTeamItem.setChoiceValues(TeamChoices);
+    } 
+  }
+
+}
+
+
+
+  
+
+
+
+  
+
+  
+  
