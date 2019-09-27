@@ -33,7 +33,7 @@ function UpdateForm(){
     }
   }
   
-  for (i = 0; i < 1; i++){   
+  for (i = 0; i < 1; i++){    
   thisItem = allitems[i];
   thisItemType =thisItem.getType();
     Logger.log('thisItemType: ' + thisItemType); 
