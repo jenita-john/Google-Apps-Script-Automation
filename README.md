@@ -1,13 +1,10 @@
 ## Description
-The script automatically updates any changes made in the Google Sheets to the associated Google form. To achive this bounded script must be added to the Google Sheets and `on-edit` trigger must be enabled.
+The purpose of the script is to update the Google form whenever a change has been made to the Google Sheet. In this specific case, a specific field, that is, a dropdown list in the Google form is updated automatically. For this scenario, the script should be bounded to the Google Sheet and the `onEdit` trigger must be enabled.
 
-## Reuse Set up 
+## Set Up 
 
-1. Add the bounded script (UpdatingForm) to Google Sheet:
-`Tools > Script editor`
-<img align="left" alt="Script-Editor" src="https://csharpcorner.azureedge.net/UploadFile/BlogImages/10072019102513AM/1.png"/>
-<br>
+1. Copy & Paste the script (UpdatingForm) to Google Sheet Script editor in the Google Sheets: `Tools > Script editor` <img align="left" alt="Script-Editor" src="https://user-images.githubusercontent.com/55056316/103392928-17637d00-4aee-11eb-8efd-63b3f5de1f3d.png"/>
 2. Fill in the fields in UpdatingForm with appropriate Google form id and sheet locations.
-<br>
-3. Add `onEdit` trigger by clicking the clock in Script editor and then `Add Trigger`. In the function feild write `UpdateForm` and in triggers add `onEdit`
-<img align="left" alt="Script-Editor" src="https://i1.wp.com/alicekeeler.com/wp-content/uploads/2018/12/2018-12-13_07-39-52.png?w=1052&ssl=1"/>
+3. Set `onEdit` trigger by clicking the clock in Script editor and then `Add Trigger`. In the function feild write `UpdateForm` and in triggers add `onEdit`<img align="left" alt="Trigger" src="https://user-images.githubusercontent.com/55056316/103393425-948ff180-4af0-11eb-9435-8cfd8c50a13b.png"/> <br> <img align="left" alt="Trigger" src="https://user-images.githubusercontent.com/55056316/103393558-30b9f880-4af1-11eb-87eb-656ff7c6e757.png"/> 
+
+
