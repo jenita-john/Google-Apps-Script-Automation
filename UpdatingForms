@@ -1,69 +1,42 @@
-function UpdateForm(){
+// Google Sheets 
+var ss = SpreadsheetApp.getActive();                                
+var sheet = ss.getSheets()[0];                                                                         
+var range = sheet.getDataRange();                                               
+var values = range.getValues();  
 
-  var form = FormApp.openById('Form ID');    // Using an existing form 
-  var allitems = form.getItems();
+// Google Form 
+var form = FormApp.openById(' ');    // Get an existing form ID
+var allitems = form.getItems(FormApp.ItemType.LIST);
+
+function get_form_item(){
   var i = 0,
       thisItem,
       thisItemType,
-      myListItem;
-  
-  var ss = SpreadsheetApp.getActive();                                            // Script is bounded to the Spreadsheet
-  var sheet = ss.getSheets()[0];                                                  // Returns the first sheet                                               
-  var range = sheet.getDataRange();                                               
-  var values = range.getValues();                                                 // Getting the values from Spreadsheet
-  
-  var MentorChoices = [];
-  var TeamChoices = [];
-  
-  for(var i = 1; i < values.length;i++){
-    
-  var session = values[i];
-  var Mentors = session[0];
-  var Teams = session[1];
-    
- 
-  if(!MentorChoices[Mentors])
-    {
-      MentorChoices.push(Mentors); 
-    } 
-    
-    if(!TeamChoices[Teams])
-    {
-      TeamChoices.push(Teams);             
+      thisItemTitle;
+      
+  for(i=0; i < allitems.length; i++){
+    thisItem = allitems[i];
+    thisItemType = thisItem.getType();
+    thisItemTitle = thisItem.getTitle();
+    if (thisItemType == FormApp.ItemType.LIST && thisItemTitle == "Names" ){   //Looking for ItemType: List with Title:Names
+      return thisItem
     }
-  }
-  
-  for (i = 0; i < 1; i++){    
-  thisItem = allitems[i];
-  thisItemType =thisItem.getType();
-    Logger.log('thisItemType: ' + thisItemType); 
-    
-    if(thisItemType == FormApp.ItemType.LIST)
-    {
-      myListItem = thisItem.asListItem();
-      myListItem.setChoiceValues(MentorChoices);   
-    }
-   
-   var item2 = allitems[i+1];
-   var item2Type = item2.getType();
-    Logger.log('thisItemType: ' + item2Type );
-    
-    if(thisItemType == FormApp.ItemType.LIST)
-    {
-      var myTeamItem = item2.asListItem();
-      myTeamItem.setChoiceValues(TeamChoices);
-    } 
   }
 
 }
 
+function get_sheet_list(){                                         
+  var NamesList =[];
+  for(var i = 1; i < values.length; i++){
+      var name = values[i][0];
+      NamesList.push(name);         
+  }
+  return NamesList 
+}
 
+function UpdateForm(){                   // This function is triggered every time there is an edit in the Google Sheets
+  form_item = get_form_item();           // The Form Item that is of type List is returned 
+  new_list = get_sheet_list();           // The Updated List from the sheet is returned 
+  form_item.asListItem().setChoiceValues(new_list);  // The existing dropdown list is wiped out and updated with the new list items
 
-  
-
-
-
-  
-
-  
-  
+}
