@@ -2,6 +2,8 @@
 
 The purpose of the script was to update the Google form automatically whenever a change has been made to the Google Sheet. In this specific case, a specific field, that is, a dropdown list in the Google form is updated automatically. Further, it is updating an existing Google form that has a dropdown list. For this scenario, the script should be bounded to the Google Sheet and the `onEdit` trigger must be enabled.
 
+Learn More about Google Apps Script: https://developers.google.com/apps-script
+
 ## Set Up 
 
 1. Copy & Paste the script (UpdatingForm) to Google Sheet Script editor in the Google Sheets: `Tools > Script editor` <img align="left" alt="Script-Editor" src="https://user-images.githubusercontent.com/55056316/103392928-17637d00-4aee-11eb-8efd-63b3f5de1f3d.png"/>
