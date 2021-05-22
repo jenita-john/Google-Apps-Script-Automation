@@ -1,6 +1,6 @@
 ## Description
 
-The purpose of the script is to update the Google form automatically whenever a change has been made to the Google Sheet. In this specific case, a specific field, that is, a dropdown list in the Google form will be updated automatically. Further, it is updating an existing Google form that has a dropdown list. For this scenario, the script should be bounded to the Google Sheet and the `onEdit` trigger must be enabled.
+The purpose of the script is to update the Google form automatically whenever a change has been made to the Google Sheet. In this case, a specific field, that is, a dropdown list in the Google form will be updated automatically. Further, it is updating an existing Google form that has a dropdown list. For this scenario, the script should be bounded to the Google Sheet and the `onEdit` trigger must be enabled.
 
 Learn More about Google Apps Script: https://developers.google.com/apps-script
 
